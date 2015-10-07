@@ -1,6 +1,9 @@
-# When done, submit this entire file to the autograder.
-
-# Part 1
+=begin
+   姓名:姚攀
+   学号：201528002829032
+   学院：计算机与控制学院
+   单位：新疆理技术研究所
+=end 
 
 def sum arr
 		 i=0
@@ -35,7 +38,7 @@ def sum_to_n? arr, n
 	   if(len==0&&n==0) then return true end
 	
 	   i=0
-	   while i<=len
+	   while i<len
 	   	  j=i+1
 	   	  while j<len
 	   	  	if(arr[i]+arr[j]==n)  then  return true end
@@ -53,9 +56,9 @@ def hello(name)
 end
 
 def starts_with_consonant? s
-	  if s=~/[aeiou]/
+	  if s[0,1]=~/[aeiou]/
 		 	 return false          #以aeiou开始,返回false
-		 elsif s=~/[AEIOU]/
+		 elsif s[0,1]=~/[AEIOU]/
 		 	 return false          #以AEIOU开始,返回false
 		 else                      
 		 	 return true           #以辅音开始，返回true
@@ -63,7 +66,14 @@ def starts_with_consonant? s
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+    if  s=~/^[01]0*1*/ then  
+	     s="0b"+s                         #二进制字符串加上0b   
+	     s=Integer(s)                     #字符串转为整数
+	     if s%4==0 then return true end
+	       #是4的倍数返回true  
+    end
+
+    return false
 end
 
 # Part 3
@@ -96,9 +106,5 @@ class BookInStock
 end
 
 
-arr1=[1,100,3,4,5]
-puts sum arr1
-puts max_2_sum arr1
-puts sum_to_n? arr1,8
-puts hello("yaopan")
-puts starts_with_consonant? "dddda"
+
+
