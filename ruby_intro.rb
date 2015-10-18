@@ -1,3 +1,9 @@
+=begin
+   姓名:姚攀
+   学号：201528002829032
+   学院：计算机与控制学院
+   单位：新疆理技术研究所
+=end 
 
 def sum arr
 		 i=0
@@ -20,8 +26,10 @@ def max_2_sum arr
 		 elsif arr.length==2
 		 	   sum=arr[0]+arr[1]	 	  
 		 else
+		 	   
 		 	   sum=arr.max
-		 	   arr.delete(sum)
+		 	   max_index=arr.index(sum)
+		 	   arr.delete_at(max_index)
 		 	   sum+=arr.max
 	   end
 	   return sum
@@ -29,7 +37,7 @@ end
 
 def sum_to_n? arr, n
 	   len=arr.length
-	   if(len==0&&n==0) then return true end
+	   if(len==0&&n==0) then return false end
 	
 	   i=0
 	   while i<len
@@ -45,18 +53,18 @@ end
 
 # Part 2
 
-def hello(name)
-  return "Hello,"+name;
+def hello(name)    
+    return "Hello, "+name 
 end
 
 def starts_with_consonant? s
-	  if s[0,1]=~/[aeiou]/
-		 	 return false          #以aeiou开始,返回false
-		 elsif s[0,1]=~/[AEIOU]/
-		 	 return false          #以AEIOU开始,返回false
-		 else                      
-		 	 return true           #以辅音开始，返回true
-		 end 	
+	if s.empty? then return false end
+	  if (s[0,1]=~/^[aeiou]/||s[0,1]=~/^[AEIOU]/) then return false;		           
+		end
+    if !(s[0,1]=~/[a-zA-Z]/)
+    	return false
+    end
+		return true; 	
 end
 
 def binary_multiple_of_4? s
@@ -66,37 +74,53 @@ def binary_multiple_of_4? s
 	     if s%4==0 then return true end
 	       #是4的倍数返回true  
     end
-
     return false
 end
 
 # Part 3
 
 class BookInStock
+=begin
    #构造函数
 	  def initialize(i,p)    #异常处理
 	    	raise ArgumentError,'price should be more than or equal zero' unless p>=0  
         raise ArgumentError,'ISBN should be a string' unless i.class==String
-	  	  @isbn,@price=i,p
+	  	  @ISBN=i
+	  	  @price=p
 	  end
-	  #访问器方法
-	  def printIsbn
-	  	  @isbn
-	  end
-	  def printPrice
-	  	  @price
-	  end
+
 	  #设置器方法
 	  def setIsbn=(value)
-        @isbn=value
+        @ISBN=value
 	  end
 	  def setPrice=(value)
         @price=value
 	  end
+	  #访问器方法
+	  def printIsbn
+	  	  @ISBN
+	  end
+	  def printPrice
+	  	  @price
+	  end
+	
 	  #实例方法
 	  def price_as_string
       @price="$"+format("%0.2f",@price).to_s
 	  end
+=end
+ def initialize(isbn,price)
+		raise ArgumentError if isbn.empty? || price <= 0	
+		@isbn=isbn
+		@price=price
+	end#初始化方法结束
+	
+	def price_as_string
+		format("$%.2f",@price)
+	end#方法结束
+	
+	attr_accessor:isbn
+	attr_accessor:price
 end
 
 
